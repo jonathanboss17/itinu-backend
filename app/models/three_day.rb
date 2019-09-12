@@ -1,0 +1,2 @@
+class ThreeDay < ApplicationRecord
+end
