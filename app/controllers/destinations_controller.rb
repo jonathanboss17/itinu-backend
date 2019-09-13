@@ -6,10 +6,9 @@ class DestinationsController < ApplicationController
 
     def show 
         destination = Destination.find_by(id: params[:id])
-        # render json: destination, include: [:one_days, :two_days], except: [:created_at, :updated_at]
         render json: destination.to_json(:include => {
-            :one_days => {:include => [:images, :genre, :user]},
-            :two_days => {:include => [:images, :genre, :user]}
+            :one_days => {:include => [:images, :genre, :user, :comments, :likes]},
+            :two_days => {:include => [:images, :genre, :user, :comments, :likes]}
           }, :except => [:updated_at])
     end
 end
